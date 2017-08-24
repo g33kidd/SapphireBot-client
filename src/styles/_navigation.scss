@@ -1,0 +1,38 @@
+nav {
+  &.navbar-dark {
+
+  }
+  &.bg-dark {
+    
+  }
+
+  &.status-bar {
+    background: #2B2E33;
+
+    .indicator {
+      padding: 10px 15px;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      .service {
+        font-size: 18px;
+        color: #717987;
+        line-height: 1;
+      }
+      .state {
+        font-size: 14px;
+        &.online {
+          color: #3EB93A;
+        }
+        &.offline {
+          color: #B93A3A;
+        }
+        &.unknown {
+
+        }
+      }
+    }
+  }
+}
