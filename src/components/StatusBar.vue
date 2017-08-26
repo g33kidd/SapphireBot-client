@@ -12,8 +12,8 @@
       <div class="indicator" v-if="bots">
         <div class="service">Discord Bot</div>
         <div class="state" :class="{'offline': bots.discord.status != 0, 'online': bots.discord.status == 0}">
-          <span v-if="stream == null">Offline</span>
-          <span v-else>Connected</span>
+          <span v-if="bots.discord.status == 0">Connected</span>
+          <span v-else>Offline</span>
         </div>
       </div>
 
@@ -37,14 +37,21 @@ export default {
   },
 
   created () {
-    this.$http.get('status/stream')
-      .then(res => this.stream = res.data)
+    this.getStatus()
 
-    this.$http.get('status/bots')
-      .then(res => this.bots = res.data)
+    this.$sails.socket.get('/status/subscribe')
+    this.$sails.socket.on('twitch:status', this.getStatus)
+    this.$sails.socket.on('bots:status', this.getStatus)
   },
 
   methods: {
+    getStatus () {
+      this.$http.get('status/stream')
+        .then(res => this.stream = res.data)
+
+      this.$http.get('status/bots')
+        .then(res => this.bots = res.data)
+    }
   }
 }
 </script>

@@ -2,19 +2,16 @@ nav {
   &.navbar-dark {
 
   }
+
   &.bg-dark {
-    
+    background-color: #1F2124 !important;  
   }
 
   &.status-bar {
     background: #2B2E33;
 
     .indicator {
-      padding: 10px 15px;
-
-      &:first-of-type {
-        padding-left: 0;
-      }
+      padding: 10px .5rem;
 
       .service {
         font-size: 18px;

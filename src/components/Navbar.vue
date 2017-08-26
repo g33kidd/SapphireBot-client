@@ -1,18 +1,18 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard</a>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/" exact>Dashboard</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Stream</a>
+          <router-link class="nav-link" to="/stream" exact>Stream</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Stats</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Bot Settings</a>
+          <router-link class="nav-link" to="/bot-settings" exact>Bot Settings</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Configure</a>
