@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div class="bot-settings">
+    <div class="container mt-2">
+
+      
+
+    </div>
+  </div>
 </template>
 
 <script>

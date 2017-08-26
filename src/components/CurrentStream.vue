@@ -4,11 +4,14 @@
       <img :src="stream.preview.large" class="preview-img">
       <div class="extra">
         <div class="viewers">Viewers {{ stream.viewers }}</div>
+        <div class="chatters" v-if="chatters">Chatters {{ chatters.chatter_count }}</div>
       </div>
 
       <div class="edit" v-if="editable">
-        <input type="text" class="form-control" name="title" v-model="edit.title">
-        <input type="text" class="form-control" name="game" v-model="edit.game">
+        <input type="text" class="form-control" name="title" v-model="edit.status" :placeholder="stream.channel.status">
+        <input type="text" class="form-control" name="game" v-model="edit.game" :placeholder="stream.game">
+
+        <button class="btn btn-primary" @click="updateChannel">Update</button>
       </div>
     </div>
     <div class="offline" v-else>
@@ -24,22 +27,23 @@ export default {
 
   data () {
     return {
+      chatters: null,
       edit: {
-        title: '',
+        status: '',
         game: ''
       }
     }
   },
 
-  beforeUpdate () {
-    if (typeof(this.stream.channel) != 'undefined') {
-      this.edit.title = this.stream.channel.status
-      this.edit.game = this.stream.game
-    }
+  created () {
+    this.$http.get('twitch/chatters').then(console.log)
   },
 
-  created () {
-    
+  methods: {
+    updateChannel () {
+      this.$http.post('twitch/updateChannel', this.edit)
+        .then(console.log)
+    }
   }
 }
 </script>
