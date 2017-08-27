@@ -9,6 +9,10 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+window.$ = window.jQuery = require('jquery')
+window.Popper = require('popper.js')
+require('bootstrap')
+
 Vue.use(SailsIO, "http://localhost:1337")
 Vue.use(VueAxios, axios.create({
   baseURL: 'http://localhost:1337'
