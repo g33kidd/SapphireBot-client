@@ -42,6 +42,9 @@ export default {
     this.$sails.socket.get('/status/subscribe')
     this.$sails.socket.on('twitch:status', this.getStatus)
     this.$sails.socket.on('bots:status', this.getStatus)
+    this.$sails.socket.on('stream:status', (data) => {
+      this.stream = data
+    })
   },
 
   methods: {
